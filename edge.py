@@ -47,7 +47,7 @@ c = 0
 for i in contours:
         area = cv2.contourArea(i)
         if area > 1000/2:
-            cv2.drawContours(image, contours, c, (0, 0, 0), 3)
+            cv2.drawContours(image, contours, c, (255, 255, 255), 3) # make colour (0,0,0) i.e. black to see the conotours
         c+=1
 
 #print(best_cnt)
