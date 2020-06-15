@@ -22,6 +22,8 @@ for i in range(0,nRows):
     for j in range(0, mCols):
         roi = img[i*sizeY//nRows:i*sizeY//nRows + sizeY//nRows ,j*sizeX//mCols:j*sizeX//mCols + sizeX//mCols]
         #cv2.imshow('rois'+str(i)+str(j), roi)
+        #roi.resize(28,28)
+        roi=cv2.resize(roi, (28,28))
         cv2.imwrite('patches/patch_'+str(i)+str(j)+".jpg", roi)
 
 
