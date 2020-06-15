@@ -52,24 +52,25 @@ for i in contours:
 
 #print(best_cnt)
 
-approx = cv2.approxPolyDP(best_cnt, 0.009 * cv2.arcLength(best_cnt, True), True) 
-
-n = approx.ravel()
-x1, y1, x2, y2, x3, y3, x4, y4 = n
-x1=x2
-x4 = x3
-y1=y4
-y3=y2
-print(y4-y2 , " " , x1-x4)
-h, l = gray.shape
+#approx = cv2.approxPolyDP(best_cnt, 0.1 * cv2.arcLength(best_cnt, True), True) 
+#n = approx.ravel()
+#x1, y1, x2, y2, x3, y3, x4, y4 = n
+#print(y4-y2 , " " , x1-x4)
+#h, l = gray.shape
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-final_image = gray[y4:y2, x1:x4]
+x,y,w,h = cv2.boundingRect(best_cnt)
+#final_image = gray[y4:y2, x1:x4]
+final_image  = gray[y:y+h, x:x+w]
 print(final_image.shape)
 
 cv2.imwrite("preprocessed_imgs/s_1_processed.jpg", final_image)
 
-cv2.imshow('output', final_image   )
+#cell = final_image[311//9:2*311//9 , 311//9:2*311//9]
+
+
+
+
+cv2.imshow('output', final_image)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
